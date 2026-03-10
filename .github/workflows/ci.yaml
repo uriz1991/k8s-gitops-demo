@@ -24,3 +24,14 @@ jobs:
         context: ./app
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/k8s-gitops-demo:${{ github.sha }}
+
+    - name: Update image tag in infra repo
+      run: |
+        git clone https://x-access-token:${{ secrets.INFRA_REPO_TOKEN }}@github.com/uriz1991/k8s-gitops-demo-infra.git
+        cd k8s-gitops-demo-infra
+        sed -i "s|uriz1991/k8s-gitops-demo:.*|uriz1991/k8s-gitops-demo:${{ github.sha }}|g" k8s/deployment.yaml
+        git config user.email "ci@github.com"
+        git config user.name "GitHub Actions"
+        git add k8s/deployment.yaml
+        git commit -m "Update image tag to ${{ github.sha }}"
+        git push
