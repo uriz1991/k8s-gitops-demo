@@ -22,5 +22,6 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: ./app
+        file: ./app/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/k8s-gitops-demo:${{ github.sha }}
