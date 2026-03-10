@@ -1,7 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitOps Live Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+      padding: 40px;
+    }
+    .badge {
+      background: #238636;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 48px;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    p {
+      color: #8b949e;
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+    .pipeline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .step {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 14px;
+    }
+    .step .icon { font-size: 24px; margin-bottom: 8px; }
+    .arrow { color: #58a6ff; font-size: 20px; }
+    .version {
+      margin-top: 40px;
+      color: #3fb950;
+      font-size: 13px;
+    }
+  </style>
+</head>
 <body>
-  <h1>k8s-gitops-demo</h1>
-  <p>Version: 1.0.0</p>
+  <div class="container">
+    <div class="badge">✅ Deployed via GitOps</div>
+    <h1>k8s-gitops-demo</h1>
+    <p>הדף הזה הגיע לאוויר דרך GitHub Actions + ArgoCD + Kubernetes</p>
+
+    <div class="pipeline">
+      <div class="step">
+        <div class="icon">📝</div>
+        git push
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">⚙️</div>
+        GitHub Actions
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">🐳</div>
+        DockerHub
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">🔄</div>
+        ArgoCD
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">☸️</div>
+        Kubernetes
+      </div>
+    </div>
+
+    <div class="version">v2.0 - GitOps Pipeline Active</div>
+  </div>
 </body>
 </html>
